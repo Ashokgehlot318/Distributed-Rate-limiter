@@ -6,6 +6,7 @@ import com.ratelimit.DistributedRateLimiter.auth_service.auth_repositories.UserR
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,7 +15,7 @@ public class User_DataInitializer implements CommandLineRunner {
 
     private final SubscriptionPlanRepository subscriptionPlanRepository;
     private final UserRepository userRepository;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) {
@@ -77,8 +78,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("ashok")
                     .email("ashok@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.ADMIN)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(proMax)
@@ -87,8 +87,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("john")
                     .email("john@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(free)
@@ -97,8 +96,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("alice")
                     .email("alice@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(premium)
@@ -107,8 +105,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("bob")
                     .email("bob@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(pro)
@@ -117,8 +114,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("charlie")
                     .email("charlie@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(free)
@@ -127,8 +123,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("david")
                     .email("david@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(premium)
@@ -137,8 +132,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("emma")
                     .email("emma@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(pro)
@@ -147,8 +141,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("frank")
                     .email("frank@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(proMax)
@@ -157,8 +150,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("grace")
                     .email("grace@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(free)
@@ -167,8 +159,7 @@ public class User_DataInitializer implements CommandLineRunner {
             userRepository.save(User.builder()
                     .username("harry")
                     .email("harry@gmail.com")
-                    .password("password")
-//                    .password(passwordEncoder.encode("password"))
+                    .password(passwordEncoder.encode("password"))
                     .role(UserRole.USER)
                     .accountStatus(AccountStatus.ACTIVE)
                     .subscriptionPlan(pro)
