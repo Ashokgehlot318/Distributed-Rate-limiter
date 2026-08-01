@@ -1,4 +1,4 @@
-package com.ratelimit.DistributedRateLimiter.auth_service.entities;
+package com.ratelimit.DistributedRateLimiter.auth_service.auth_entities;
 
 import jakarta.persistence.*;
 import lombok.*;

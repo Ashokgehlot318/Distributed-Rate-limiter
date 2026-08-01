@@ -1,4 +1,4 @@
-package com.ratelimit.DistributedRateLimiter.auth_service.entities;
+package com.ratelimit.DistributedRateLimiter.auth_service.auth_entities;
 
 
 import jakarta.persistence.*;
@@ -17,10 +17,10 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, length = 100)
     private String username;
 
     @Column(nullable = false, unique = true, length = 255)

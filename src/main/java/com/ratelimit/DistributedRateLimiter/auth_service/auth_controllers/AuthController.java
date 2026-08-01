@@ -1,4 +1,4 @@
-package com.ratelimit.DistributedRateLimiter.auth_service.controllers;
+package com.ratelimit.DistributedRateLimiter.auth_service.auth_controllers;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
