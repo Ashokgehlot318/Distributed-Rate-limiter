@@ -4,7 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -14,10 +16,17 @@ import java.util.Date;
 public class JwtUtils {
 
     @Value("${jwt.secret}")
-    static String SECRET_KEY;
+    private String SECRET_KEY;
 
-    public final SecretKey JWT_SECRET = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    public SecretKey JWT_SECRET;
     private final long EXPIRATION_TIME = 1000*60*60;
+
+
+    @PostConstruct
+    public void init() {
+        JWT_SECRET = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    }
+
 
     public String genearteToken(String email){
         return Jwts.builder()
@@ -30,9 +39,21 @@ public class JwtUtils {
 
     public Claims extractClaims(String token){
         return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
+                .setSigningKey(JWT_SECRET)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public String extractEmail(String token) {
+        return extractClaims(token).getSubject();
+    }
+
+    public boolean isTokenExpired(String token){
+        return extractClaims(token).getExpiration().before(new Date());
+    }
+
+    public boolean isvalidateToken(String email, UserDetails userDetails, String token) {
+        return email.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 }
